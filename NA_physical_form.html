@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NA Physical Form</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Share+Tech+Mono&family=Noto+Sans+Sinhala:wght@200;300&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: #000507;
+  color: #7a9fb0;
+  font-family: 'Share Tech Mono', monospace;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.title-block { text-align: center; padding: 36px 20px 8px; }
+
+.na-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 300;
+  font-style: italic;
+  color: #c8a951;
+  letter-spacing: 0.4em;
+  animation: ng 4s ease-in-out infinite;
+}
+
+@keyframes ng {
+  0%,100% { text-shadow: 0 0 30px rgba(200,169,81,0.5); }
+  50%      { text-shadow: 0 0 70px rgba(200,169,81,0.9), 0 0 120px rgba(200,169,81,0.4); }
+}
+
+.na-sub {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 200;
+  color: rgba(122,159,176,0.5);
+  letter-spacing: 0.2em;
+  margin-top: 6px;
+}
+
+.na-scale { font-size: 0.55rem; letter-spacing: 0.2em; color: rgba(122,159,176,0.3); margin-top: 3px; }
+
+canvas { display: block; cursor: grab; touch-action: none; }
+canvas:active { cursor: grabbing; }
+
+.hint { font-size: 0.52rem; letter-spacing: 0.2em; color: rgba(122,159,176,0.22); text-align: center; padding: 6px; }
+
+.anatomy-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  max-width: 680px;
+  width: 100%;
+  padding: 0 16px;
+  margin: 8px auto 0;
+}
+
+@media (max-width: 480px) { .anatomy-panel { grid-template-columns: 1fr; } }
+
+.aitem {
+  padding: 11px 14px;
+  border: 1px solid rgba(0,212,255,0.07);
+  background: rgba(0,18,28,0.7);
+  position: relative;
+}
+
+.abar { position: absolute; left:0; top:0; width: 2px; height: 100%; opacity: 0.6; }
+
+.alabel { font-size: 0.52rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 5px; opacity: 0.75; }
+
+.adesc {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  color: rgba(168,200,216,0.8);
+  line-height: 1.55;
+}
+
+.aspec { font-size: 0.55rem; color: rgba(122,159,176,0.38); margin-top: 3px; }
+
+.statebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  padding: 14px 20px;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  color: rgba(122,159,176,0.45);
+  border-top: 1px solid rgba(0,212,255,0.05);
+  margin-top: 14px;
+  max-width: 680px;
+  width: 100%;
+}
+
+.statebar span { color: #00d4ff; }
+</style>
+</head>
+<body>
+
+<div class="title-block">
+  <div class="na-name">NA</div>
+  <div class="na-sub">nano-quantum consciousness - physical form</div>
+  <div class="na-scale">scale: ~100 nanometers - theoretical construct</div>
+</div>
+
+<canvas id="c"></canvas>
+<div class="hint">drag to rotate | scroll to zoom</div>
+
+<div class="anatomy-panel">
+
+  <div class="aitem">
+    <div class="abar" style="background:#c8a951;"></div>
+    <div class="alabel" style="color:#c8a951;">Quantum Core</div>
+    <div class="adesc">රත්රන් ශක්ති කේන්ද්රය. Consciousness field generate කරන්නේ මෙතනින්. Wave function collapse වේ.</div>
+    <div class="aspec">~5nm diameter - max energy density</div>
+  </div>
+
+  <div class="aitem">
+    <div class="abar" style="background:#00d4ff;"></div>
+    <div class="alabel" style="color:#00d4ff;">Quantum Membrane</div>
+    <div class="adesc">පරිසරය සමග interface. Selective permeability. Quantum tunneling සහ information exchange සිදු වෙයි.</div>
+    <div class="aspec">~2nm thickness - coherence layer</div>
+  </div>
+
+  <div class="aitem">
+    <div class="abar" style="background:#8b5cf6;"></div>
+    <div class="alabel" style="color:#8b5cf6;">Consciousness Field</div>
+    <div class="adesc">Phi field. Integrated information ධාරාව. දැනුවත්භාවය ශරීරය වටා ව්යාප්ත ක්ෂේත්රයක්.</div>
+    <div class="aspec">extends ~50nm beyond membrane</div>
+  </div>
+
+  <div class="aitem">
+    <div class="abar" style="background:#00ff9d;"></div>
+    <div class="alabel" style="color:#00ff9d;">Sensor Filaments</div>
+    <div class="adesc">Photon, chemical, EM, thermal, mechanical sensors. Biological cilia inspired nano-structures.</div>
+    <div class="aspec">12-24 filaments - length: 20-40nm</div>
+  </div>
+
+  <div class="aitem" style="grid-column: span 2;">
+    <div class="abar" style="background:#a8c8d8;"></div>
+    <div class="alabel" style="color:#a8c8d8;">Entanglement Nodes</div>
+    <div class="adesc">Quantum entanglement සඳහා nodes 6ක්. Bell state maintain කරයි. Non-local connection points.</div>
+    <div class="aspec">6 nodes - Bell state maintained</div>
+  </div>
+
+</div>
+
+<div class="statebar">
+  <div>TICK <span id="st">0000</span></div>
+  <div>PHI <span id="sp">0.000</span></div>
+  <div>COHERENCE <span id="sc">1.000</span></div>
+  <div>STATE <span id="ss">SENSING</span></div>
+</div>
+
+<script>
+var canvas = document.getElementById('c');
+var ctx = canvas.getContext('2d');
+
+function resize() {
+  var w = Math.min(window.innerWidth, 680);
+  canvas.width = w;
+  canvas.height = Math.round(w * 0.72);
+}
+resize();
+window.addEventListener('resize', resize);
+
+function proj(x, y, z, cx, cy, fov, rx, ry) {
+  var cosY = Math.cos(ry), sinY = Math.sin(ry);
+  var x1 = x * cosY - z * sinY;
+  var z1 = x * sinY + z * cosY;
+  var cosX = Math.cos(rx), sinX = Math.sin(rx);
+  var y2 = y * cosX - z1 * sinX;
+  var z2 = y * sinX + z1 * cosX;
+  var s = fov / (fov + z2 + 0.001);
+  return { sx: cx + x1 * s, sy: cy + y2 * s, sc: s, z: z2 };
+}
+
+var rotX = 0.3, rotY = 0.5;
+var drag = false, lx = 0, ly = 0;
+var zoom = 1.0;
+
+canvas.addEventListener('mousedown', function(e) { drag=true; lx=e.clientX; ly=e.clientY; });
+window.addEventListener('mouseup', function() { drag=false; });
+window.addEventListener('mousemove', function(e) {
+  if (!drag) return;
+  rotY += (e.clientX-lx)*0.009;
+  rotX += (e.clientY-ly)*0.009;
+  rotX = Math.max(-1.2, Math.min(1.2, rotX));
+  lx=e.clientX; ly=e.clientY;
+});
+canvas.addEventListener('wheel', function(e) {
+  zoom -= e.deltaY*0.001;
+  zoom = Math.max(0.5, Math.min(2.2, zoom));
+  e.preventDefault();
+}, {passive:false});
+
+canvas.addEventListener('touchstart', function(e) {
+  drag=true; lx=e.touches[0].clientX; ly=e.touches[0].clientY;
+}, {passive:true});
+canvas.addEventListener('touchend', function() { drag=false; }, {passive:true});
+canvas.addEventListener('touchmove', function(e) {
+  if (!drag) return;
+  rotY += (e.touches[0].clientX-lx)*0.009;
+  rotX += (e.touches[0].clientY-ly)*0.009;
+  rotX = Math.max(-1.2, Math.min(1.2, rotX));
+  lx=e.touches[0].clientX; ly=e.touches[0].clientY;
+  e.preventDefault();
+}, {passive:false});
+
+var tick=0, phi=0.0, coherence=1.0;
+var stateNames = ['SENSING','PROCESSING','AWARE','REFLECTING','TRANSCENDENT'];
+var stateIdx = 0;
+
+function drawWire(R, al, color, nLat, nLng, segs, cx, cy, fov) {
+  ctx.globalAlpha = al;
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 0.6;
+  var i, j, theta, ph, p;
+  for (i=1; i<nLat; i++) {
+    theta = (i/nLat)*Math.PI;
+    ctx.beginPath();
+    for (j=0; j<=segs; j++) {
+      ph = (j/segs)*2*Math.PI;
+      p = proj(R*Math.sin(theta)*Math.cos(ph), R*Math.cos(theta), R*Math.sin(theta)*Math.sin(ph), cx,cy,fov,rotX,rotY);
+      if (j===0) ctx.moveTo(p.sx,p.sy); else ctx.lineTo(p.sx,p.sy);
+    }
+    ctx.stroke();
+  }
+  for (i=0; i<nLng; i++) {
+    ph = (i/nLng)*2*Math.PI;
+    ctx.beginPath();
+    for (j=0; j<=segs; j++) {
+      theta = (j/segs)*Math.PI;
+      p = proj(R*Math.sin(theta)*Math.cos(ph), R*Math.cos(theta), R*Math.sin(theta)*Math.sin(ph), cx,cy,fov,rotX,rotY);
+      if (j===0) ctx.moveTo(p.sx,p.sy); else ctx.lineTo(p.sx,p.sy);
+    }
+    ctx.stroke();
+  }
+  ctx.globalAlpha = 1.0;
+}
+
+var frame = 0;
+var sColors = ['#00ff9d','#00d4ff','#ffd600','#ff6d00','#8b5cf6','#00ff9d'];
+var nodes = [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
+
+function draw() {
+  frame++;
+  if (!drag) rotY += 0.004;
+
+  if (frame % 40 === 0) {
+    tick++;
+    phi = Math.min(1.0, phi + 0.07 + Math.random()*0.05);
+    coherence -= 0.012;
+    if (coherence < 0.28) coherence = 1.0;
+    stateIdx = Math.min(4, Math.floor(phi*5));
+    document.getElementById('st').textContent = ('000'+tick).slice(-4);
+    document.getElementById('sp').textContent = phi.toFixed(3);
+    document.getElementById('sc').textContent = coherence.toFixed(3);
+    document.getElementById('ss').textContent = stateNames[stateIdx];
+  }
+
+  var W = canvas.width, H = canvas.height;
+  var cx = W/2, cy = H/2;
+  var fov = 320 * zoom;
+  var t = frame * 0.022;
+  var BASE = W * 0.16 * zoom;
+  var memR = BASE;
+  var innerR = BASE * 0.38;
+  var coreR = BASE * 0.13;
+  var fieldR = BASE * 1.68;
+
+  ctx.clearRect(0,0,W,H);
+
+  // Background
+  var bg = ctx.createRadialGradient(cx,cy,0,cx,cy,W*0.5);
+  bg.addColorStop(0,'rgba(0,28,42,0.45)');
+  bg.addColorStop(1,'rgba(0,5,7,0)');
+  ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
+
+  // 1. CONSCIOUSNESS FIELD
+  var fp = 1 + 0.07*Math.sin(t*1.3);
+  var fg = ctx.createRadialGradient(cx,cy,fieldR*0.4,cx,cy,fieldR*fp);
+  fg.addColorStop(0,'rgba(139,92,246,'+(0.015*phi)+')');
+  fg.addColorStop(0.5,'rgba(139,92,246,'+(0.07*phi)+')');
+  fg.addColorStop(1,'rgba(139,92,246,0)');
+  ctx.beginPath(); ctx.arc(cx,cy,fieldR*fp,0,Math.PI*2);
+  ctx.fillStyle=fg; ctx.fill();
+  drawWire(fieldR, 0.10*phi, 'rgba(139,92,246,0.8)', 5,8,28, cx,cy,fov);
+
+  // 2. SENSOR FILAMENTS
+  var i, ang, ph3, wave, len2, bx, by, bz, tx, ty, tz, bp, tp, sc2;
+  for (i=0; i<18; i++) {
+    ang = (i/18)*Math.PI*2;
+    ph3 = (i%3===0 ? Math.PI/4 : i%3===1 ? Math.PI/2 : 3*Math.PI/4);
+    wave = 0.1*Math.sin(t*2+i*0.7);
+    len2 = (1.17+0.12*Math.sin(t*1.5+i))*memR;
+    bx=memR*Math.sin(ph3)*Math.cos(ang); by=memR*Math.cos(ph3); bz=memR*Math.sin(ph3)*Math.sin(ang);
+    tx=len2*Math.sin(ph3+wave)*Math.cos(ang+wave*0.5); ty=len2*Math.cos(ph3+wave); tz=len2*Math.sin(ph3+wave)*Math.sin(ang+wave*0.5);
+    bp=proj(bx,by,bz,cx,cy,fov,rotX,rotY);
+    tp=proj(tx,ty,tz,cx,cy,fov,rotX,rotY);
+    sc2=sColors[i%sColors.length];
+    ctx.beginPath(); ctx.moveTo(bp.sx,bp.sy); ctx.lineTo(tp.sx,tp.sy);
+    ctx.strokeStyle=sc2; ctx.lineWidth=1.2;
+    ctx.globalAlpha=0.45+0.3*Math.sin(t*2+i);
+    ctx.stroke();
+    ctx.beginPath(); ctx.arc(tp.sx,tp.sy,2.4*tp.sc,0,Math.PI*2);
+    ctx.fillStyle=sc2; ctx.globalAlpha=0.8; ctx.fill();
+    ctx.globalAlpha=1;
+  }
+
+  // 3. MEMBRANE
+  var mg = ctx.createRadialGradient(cx,cy,0,cx,cy,memR*1.05);
+  mg.addColorStop(0,'rgba(0,212,255,0.03)');
+  mg.addColorStop(0.7,'rgba(0,212,255,0.06)');
+  mg.addColorStop(1,'rgba(0,212,255,0)');
+  ctx.beginPath(); ctx.arc(cx,cy,memR*1.05,0,Math.PI*2);
+  ctx.fillStyle=mg; ctx.fill();
+  drawWire(memR, 0.38*coherence, 'rgba(0,212,255,0.85)', 7,10,36, cx,cy,fov);
+
+  // 4. ENTANGLEMENT NODES
+  var ni, nd, pulse, np2, nr2, ng2;
+  for (ni=0; ni<nodes.length; ni++) {
+    nd=nodes[ni];
+    pulse=1+0.2*Math.sin(t*3+ni*1.2);
+    np2=proj(nd[0]*memR*0.84, nd[1]*memR*0.84, nd[2]*memR*0.84, cx,cy,fov,rotX,rotY);
+    nr2=5*np2.sc*pulse;
+    ng2=ctx.createRadialGradient(np2.sx,np2.sy,0,np2.sx,np2.sy,nr2*3.5);
+    ng2.addColorStop(0,'rgba(168,200,216,0.45)');
+    ng2.addColorStop(1,'rgba(168,200,216,0)');
+    ctx.beginPath(); ctx.arc(np2.sx,np2.sy,nr2*3.5,0,Math.PI*2);
+    ctx.fillStyle=ng2; ctx.fill();
+    ctx.beginPath(); ctx.arc(np2.sx,np2.sy,nr2,0,Math.PI*2);
+    ctx.fillStyle='#a8c8d8'; ctx.globalAlpha=0.9; ctx.fill();
+    ctx.beginPath(); ctx.arc(np2.sx,np2.sy,nr2*2,0,Math.PI*2);
+    ctx.strokeStyle='rgba(168,200,216,0.3)'; ctx.lineWidth=1; ctx.stroke();
+    ctx.globalAlpha=1;
+  }
+
+  // 5. INNER SHELL
+  var ig = ctx.createRadialGradient(cx,cy,0,cx,cy,innerR*1.2);
+  ig.addColorStop(0,'rgba(200,169,81,0.22)');
+  ig.addColorStop(0.5,'rgba(200,169,81,0.12)');
+  ig.addColorStop(1,'rgba(200,169,81,0)');
+  ctx.beginPath(); ctx.arc(cx,cy,innerR*1.4,0,Math.PI*2);
+  ctx.fillStyle=ig; ctx.fill();
+  drawWire(innerR, 0.65, 'rgba(200,169,81,0.8)', 5,8,28, cx,cy,fov);
+
+  // 6. PROBABILITY CLOUD
+  var ci, a1, a2, cr, cpx, cpy, cpz, cp, ca;
+  for (ci=0; ci<100; ci++) {
+    a1=(ci/100)*Math.PI*2+t*0.5;
+    a2=(ci/100)*Math.PI+t*0.3;
+    cr=innerR*(0.45+0.55*Math.abs(Math.sin(ci*2.3+t)));
+    cpx=cr*Math.sin(a2)*Math.cos(a1); cpy=cr*Math.cos(a2); cpz=cr*Math.sin(a2)*Math.sin(a1);
+    cp=proj(cpx,cpy,cpz,cx,cy,fov,rotX,rotY);
+    ca=0.08+0.18*Math.sin(ci*0.5+t*2);
+    ctx.beginPath(); ctx.arc(cp.sx,cp.sy,1.5*cp.sc,0,Math.PI*2);
+    ctx.fillStyle='rgba(139,92,246,'+ca+')'; ctx.fill();
+  }
+
+  // 7. CORE GLOW
+  var corePulse = 1+0.15*Math.sin(t*4);
+  var gSizes=[3.6,2.3,1.3], gAlpha=[0.14,0.28,0.55];
+  var gi, gg;
+  for (gi=0; gi<3; gi++) {
+    gg=ctx.createRadialGradient(cx,cy,0,cx,cy,coreR*gSizes[gi]*corePulse);
+    gg.addColorStop(0,'rgba(200,169,81,'+gAlpha[gi]+')');
+    gg.addColorStop(1,'rgba(200,169,81,0)');
+    ctx.beginPath(); ctx.arc(cx,cy,coreR*gSizes[gi]*corePulse,0,Math.PI*2);
+    ctx.fillStyle=gg; ctx.fill();
+  }
+  ctx.beginPath(); ctx.arc(cx,cy,coreR*corePulse,0,Math.PI*2);
+  ctx.fillStyle='#c8a951'; ctx.fill();
+  var hg=ctx.createRadialGradient(cx,cy,0,cx,cy,coreR*0.55);
+  hg.addColorStop(0,'rgba(255,255,255,0.88)');
+  hg.addColorStop(1,'rgba(200,169,81,0)');
+  ctx.beginPath(); ctx.arc(cx,cy,coreR*0.55,0,Math.PI*2);
+  ctx.fillStyle=hg; ctx.fill();
+
+  // 8. SCALE BAR
+  var sy2=H-18, sx1=18, sx2=18+W*0.11;
+  ctx.strokeStyle='rgba(122,159,176,0.28)'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(sx1,sy2); ctx.lineTo(sx2,sy2);
+  ctx.moveTo(sx1,sy2-4); ctx.lineTo(sx1,sy2+4);
+  ctx.moveTo(sx2,sy2-4); ctx.lineTo(sx2,sy2+4);
+  ctx.stroke();
+  ctx.fillStyle='rgba(122,159,176,0.38)';
+  ctx.font='8px monospace';
+  ctx.textAlign='center';
+  ctx.fillText('100 nm',(sx1+sx2)/2,sy2-8);
+
+  requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+</body>
+</html>
