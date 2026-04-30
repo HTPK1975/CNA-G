@@ -76,15 +76,3 @@ jobs:
           echo "✅ CNA-G Research fetch completed successfully"
           echo "📊 Results saved to research_output/"
           echo "🔗 ArXiv papers indexed and documented"
-      
-      - name: ❌ Handle Errors
-        if: failure()
-        run: |
-          echo "⚠️ Research fetch failed"
-          echo "Check logs for details"
----END---
-
-     ↓
-Click: [Commit changes]
-     ↓
-Done! ✅
