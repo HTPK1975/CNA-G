@@ -1,15 +1,4 @@
-
-You're viewing the file now!
-
-Click: [Edit button] (pencil icon)
-     ↓
-Delete that 1 line
-     ↓
-Paste COMPLETE YAML code:
-
----PASTE THIS---
-name: CNA-G Research Papers Daily Fetch
-
+CNA-G Research Papers Daily Fetch
 on:
   schedule:
     - cron: '0 18 * * *'
