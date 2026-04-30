@@ -75,4 +75,4 @@ jobs:
         run: |
           echo "✅ CNA-G Research fetch completed successfully"
           echo "📊 Results saved to research_output/"
-          echo "🔗 ArXiv papers indexed and documented" 
+          echo "🔗 ArXiv papers indexed and documented"
