@@ -1,0 +1,85 @@
+name: CNA-G Research Papers Daily Fetch
+
+on:
+  schedule:
+    - cron: '0 18 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  research-fetch:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      
+    steps:
+      - name: 📦 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: 🐍 Setup Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: 📚 Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+      
+      - name: 🔍 Fetch Latest Quantum AI Research
+        run: python scripts/fetch_papers.py
+        env:
+          ARXIV_API_TIMEOUT: 30
+      
+      - name: 📊 Check for Changes
+        id: check_changes
+        run: |
+          if git diff --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: ⚙️ Configure Git
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+      
+      - name: 📤 Auto-commit Research Results
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git add research_output/
+          git commit -m "🤖 CNA-G: Daily research papers fetch - $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: 📦 Upload Research Outputs
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: research-output-${{ github.run_number }}
+          path: research_output/
+          retention-days: 30
+      
+      - name: ✅ Research Fetch Complete
+        if: success()
+        run: |
+          echo "✅ CNA-G Research fetch completed successfully"
+          echo "📊 Results saved to research_output/"
+          echo "🔗 ArXiv papers indexed and documented"
+      
+      - name: ❌ Handle Errors
+        if: failure()
+        run: |
+          echo "⚠️ Research fetch failed"
+          echo "Check logs for details"
